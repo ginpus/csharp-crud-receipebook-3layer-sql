@@ -1,0 +1,32 @@
+﻿- Sukurti aplikaciją "Recipes app"
+- Receptus saugome Sql duomenų bazėję
+
+
+
+"Recipe" model:
+- Id
+- Name
+- Description
+- Difficulty (Easy, Medium, Hard) - Enumas
+- TimeToComplete (TimeSpan tipas) - valandos ir minutes formatu
+- DateCreated
+
+Galimos komandos konsolėje:
+- Show all recipes
+	Order by: - should come from SQL (not in list)
+	- TimeToComplete Desc/Asc
+	- DateCreated Desc/Asc
+- Add recipe
+- Edit recipe (name, description)
+- Delete recipe
+- Delete all recipes
+
+Note_Id 	Receipe_Id
+Title		Name
+Text		Description
+Difficulty
+Time_To_Complete
+Date_created	Date_created
+
+
+atskira klase receipes sorting filter. turetu tureti proipercius, pagal kuriuos keician. Enumas - asc, desc. Property - pagal kuri lauka - vel enumas gali buti?
