@@ -11,5 +11,7 @@ namespace Persistence
         int Execute(string sql, object param = null);
 
         IEnumerable<T> Query<T>(string sql, object param = null);
+
+        //Task<IEnumerable<T>> Query<T>(string sql, object param = null);
     }
 }
