@@ -13,3 +13,5 @@ F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\Domain\o
 F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\Domain\obj\Debug\net5.0\Domain.dll
 F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\Domain\obj\Debug\net5.0\ref\Domain.dll
 F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\Domain\obj\Debug\net5.0\Domain.pdb
+F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\Domain\bin\Debug\net5.0\Contracts.dll
+F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\Domain\bin\Debug\net5.0\Contracts.pdb

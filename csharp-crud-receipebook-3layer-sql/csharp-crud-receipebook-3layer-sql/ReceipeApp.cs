@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Services;
-using Persistence.Models;
+
+//using Domain.Models;
+using Persistence.Models.ReadModels;
 
 namespace csharp_crud_receipebook_3layer_sql
 {
@@ -59,13 +61,15 @@ namespace csharp_crud_receipebook_3layer_sql
                         difficulty = Console.ReadLine(); // should be enum
                         Console.WriteLine("Enter receipe Duration: ");
                         timeToComplete = Convert.ToInt32(Console.ReadLine()); // should be TimeSpan
-                        _receipeService.Create(new Receipe
+                        _receipeService.Create(new ReceipeMain
                         {
                             Name = name,
-                            Description = description,
-                            Difficulty = difficulty,
-                            Time_To_Complete = timeToComplete,
+                            Difficulty = Contracts.Enums.Difficulty.Hard,
+                            Time_To_Complete = TimeSpan.FromMinutes(timeToComplete),
                             Date_Created = DateTime.Now
+                        }, new ReceipeDescription
+                        {
+                            Description = description
                         });
                         break;
 

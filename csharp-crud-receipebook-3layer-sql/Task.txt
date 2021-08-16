@@ -3,14 +3,14 @@
 - Sukurti aplikaciją "Recipes app"
 - Receptus saugome Sql duomenų bazėję
 
-
+- Recipe description turi būti saugomi atskiroje lentelėje
 
 "Recipe" model:
 - Id
 - Name
 - Description
 - Difficulty (Easy, Medium, Hard) - Enumas
-- TimeToComplete (TimeSpan tipas) - valandos ir minutes formatu
+- TimeToComplete (TimeSpan tipas) - valandos ir minutes formatu. how to save timespan in sql. (tickai)
 - DateCreated
 
 Galimos komandos konsolėje:

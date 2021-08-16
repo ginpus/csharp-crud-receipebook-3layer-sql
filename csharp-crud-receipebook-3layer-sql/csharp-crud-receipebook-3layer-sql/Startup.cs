@@ -22,6 +22,7 @@ namespace csharp_crud_receipebook_3layer_sql
             AddSql(services);
 
             services.AddSingleton<IReceipeRepository, ReceipeRepository>();
+            services.AddSingleton<IReceipeDescRepository, ReceipeDescRepository>();
             services.AddSingleton<IReceipeService, ReceipeService>();
             services.AddSingleton<ReceipeApp>();
 

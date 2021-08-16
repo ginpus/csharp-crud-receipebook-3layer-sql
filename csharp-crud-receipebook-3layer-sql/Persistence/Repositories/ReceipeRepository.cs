@@ -1,4 +1,4 @@
-﻿using Persistence.Models;
+﻿using Persistence.Models.ReadModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,8 @@ namespace Persistence.Repositories
 {
     public class ReceipeRepository : IReceipeRepository
     {
-        private const string TableName = "receipes";
+        private const string TableName = "receipes_main";
+        private const string TableName2 = "receipes_desc";
         private readonly ISqlClient _sqlClient;
 
         public ReceipeRepository(ISqlClient sqlClient)
@@ -19,26 +20,24 @@ namespace Persistence.Repositories
 
         public IEnumerable<Receipe> GetAll()
         {
-            var sqlSelect = $"SELECT * FROM {TableName}";
+            var sqlSelect = $"SELECT {TableName}.receipe_id, {TableName}.name, {TableName}.difficulty, {TableName}.time_to_complete, {TableName}.date_created, {TableName2}.description FROM {TableName} JOIN {TableName2} ON {TableName}.receipe_id = {TableName2}.receipe_id";
             return _sqlClient.Query<Receipe>(sqlSelect);
         }
 
-        public void Save(Receipe receipe)
+        public void Save(ReceipeMain receipe)
         {
-            var sqlInsert = @$"INSERT INTO {TableName} (name, description, difficulty, time_to_complete, date_created) VALUES(@name, @description, @difficulty, @time_to_complete, @date_created)";
+            var sqlInsert = @$"INSERT INTO {TableName} (name, difficulty, time_to_complete, date_created) VALUES(@name, @difficulty, @time_to_complete, @date_created)";
             _sqlClient.Execute(sqlInsert, receipe);
         }
 
-        public void Edit(int id, string name, string description)
+        public void Edit(int id, string name)
         {
-            var sqlUpdate = $"UPDATE {TableName} SET name = @name, description = @description where receipe_id = @receipe_id";
+            var sqlUpdate = $"UPDATE {TableName} SET name = @name where receipe_id = @receipe_id";
 
             _sqlClient.Execute(sqlUpdate, new
             {
                 receipe_id = id,
-                name = name,
-                description = description,
-                date_created = DateTime.Now
+                name = name
             });
         }
 

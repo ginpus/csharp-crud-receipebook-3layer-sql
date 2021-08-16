@@ -41,3 +41,5 @@ F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\csharp-c
 F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\csharp-crud-receipebook-3layer-sql\obj\Debug\net5.0\ref\ReceipeApp.dll
 F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\csharp-crud-receipebook-3layer-sql\obj\Debug\net5.0\ReceipeApp.pdb
 F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\csharp-crud-receipebook-3layer-sql\obj\Debug\net5.0\ReceipeApp.genruntimeconfig.cache
+F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\csharp-crud-receipebook-3layer-sql\bin\Debug\net5.0\Contracts.dll
+F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\csharp-crud-receipebook-3layer-sql\bin\Debug\net5.0\Contracts.pdb

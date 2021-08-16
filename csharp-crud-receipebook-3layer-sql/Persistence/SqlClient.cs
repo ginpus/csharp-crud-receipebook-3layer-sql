@@ -35,7 +35,7 @@ namespace Persistence
             return connection.Query<T>(sql, param);
         }
 
-        /*        public async Task<IEnumerable<T>> Query<T>(string sql, object param = null)
+        /*        public async Task<IEnumerable<T>> QueryAsync<T>(string sql, object param = null)
                 {
                     using var connection = new MySqlConnection(_connectionString);
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Persistence.Models;
+using Persistence.Models.ReadModels;
 
 namespace Persistence.Repositories
 {
@@ -11,9 +11,9 @@ namespace Persistence.Repositories
     {
         IEnumerable<Receipe> GetAll();
 
-        void Save(Receipe receipe);
+        void Save(ReceipeMain receipe);
 
-        void Edit(int id, string name, string description);
+        void Edit(int id, string name);
 
         void Delete(int id);
 

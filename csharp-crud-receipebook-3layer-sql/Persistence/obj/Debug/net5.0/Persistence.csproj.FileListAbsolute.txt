@@ -10,3 +10,6 @@ F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\Persiste
 F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\Persistence\obj\Debug\net5.0\Persistence.dll
 F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\Persistence\obj\Debug\net5.0\ref\Persistence.dll
 F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\Persistence\obj\Debug\net5.0\Persistence.pdb
+F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\Persistence\bin\Debug\net5.0\Contracts.dll
+F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\Persistence\bin\Debug\net5.0\Contracts.pdb
+F:\Desktop\dotNET\C#\8.15\ReceipeApp\csharp-crud-receipebook-3layer-sql\Persistence\obj\Debug\net5.0\Persistence.csproj.CopyComplete
