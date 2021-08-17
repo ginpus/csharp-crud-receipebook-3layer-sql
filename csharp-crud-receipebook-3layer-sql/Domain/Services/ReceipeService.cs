@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Persistence.Models.ReadModels;
+using Contracts.Enums;
 
 namespace Domain.Services
 {
@@ -20,9 +21,9 @@ namespace Domain.Services
             _receipeDescRepository = receipeDescRepository;
         }
 
-        public IEnumerable<Receipe> GetAll()
+        public IEnumerable<Receipe> GetAll(Enum orderField, Enum orderDirection)
         {
-            return _receipeRepository.GetAll();
+            return _receipeRepository.GetAll(orderField, orderDirection);
         }
 
         public void Create(ReceipeMain receipe, ReceipeDescription receipeDescription)
@@ -47,6 +48,33 @@ namespace Domain.Services
         {
             _receipeRepository.DeleteAll();
             _receipeDescRepository.DeleteAll();
+        }
+
+        public void PrintOrderBys()
+        {
+            var count = 0;
+            foreach (var name in Enum.GetNames(typeof(OrderBy)))
+            {
+                Console.WriteLine($"{++count} - {name}");
+            }
+        }
+
+        public void PrintOrderDirs()
+        {
+            var count = 0;
+            foreach (var name in Enum.GetNames(typeof(OrderDirection)))
+            {
+                Console.WriteLine($"{++count} - {name}");
+            }
+        }
+
+        public void PrintDifficulties()
+        {
+            var count = 0;
+            foreach (var name in Enum.GetNames(typeof(Difficulty)))
+            {
+                Console.WriteLine($"{++count} - {name}");
+            }
         }
     }
 }

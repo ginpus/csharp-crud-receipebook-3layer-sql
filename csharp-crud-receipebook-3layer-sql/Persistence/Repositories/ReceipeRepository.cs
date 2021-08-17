@@ -18,10 +18,18 @@ namespace Persistence.Repositories
             _sqlClient = sqlClient;
         }
 
-        public IEnumerable<Receipe> GetAll()
+        public IEnumerable<Receipe> GetAll(Enum orderField, Enum orderDirection)
         {
-            var sqlSelect = $"SELECT {TableName}.receipe_id, {TableName}.name, {TableName}.difficulty, {TableName}.time_to_complete, {TableName}.date_created, {TableName2}.description FROM {TableName} JOIN {TableName2} ON {TableName}.receipe_id = {TableName2}.receipe_id";
+            //var sqlSelect = $"SELECT {TableName}.receipe_id, {TableName}.name, {TableName}.difficulty, {TableName}.time_to_complete, {TableName}.date_created, {TableName2}.description FROM {TableName} JOIN {TableName2} ON {TableName}.receipe_id = {TableName2}.receipe_id ORDER BY @orderFld @orderDir";
+
+            var sqlSelect = $"SELECT {TableName}.receipe_id, {TableName}.name, {TableName}.difficulty, {TableName}.time_to_complete, {TableName}.date_created, {TableName2}.description FROM {TableName} JOIN {TableName2} ON {TableName}.receipe_id = {TableName2}.receipe_id ORDER BY {orderField.ToString()} {orderDirection.ToString()}";
+
             return _sqlClient.Query<Receipe>(sqlSelect);
+
+            /*            return _sqlClient.Query<Receipe>(sqlSelect, new {
+                            orderFld = orderField.ToString(),
+                            orderDir = orderDirection.ToString(),
+                        });*/
         }
 
         public void Save(ReceipeMain receipe)

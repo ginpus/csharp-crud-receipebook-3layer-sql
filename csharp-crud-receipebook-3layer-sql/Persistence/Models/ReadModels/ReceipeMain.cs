@@ -14,13 +14,12 @@ namespace Persistence.Models.ReadModels
         public Difficulty Difficulty { get; set; }
 
         public TimeSpan Time_To_Complete { get; set; }
-        //public int Time_To_Complete { get; set; } // should be TimeSpan
 
         public DateTime Date_Created { get; set; }
 
         public override string ToString()
         {
-            return $"{Receipe_Id} - {Name} - {Difficulty} - {Time_To_Complete} - {Date_Created}";
+            return $"{Receipe_Id} - {Name} - {Difficulty.ToString()} - {Time_To_Complete} - {Date_Created}";
         }
     }
 }

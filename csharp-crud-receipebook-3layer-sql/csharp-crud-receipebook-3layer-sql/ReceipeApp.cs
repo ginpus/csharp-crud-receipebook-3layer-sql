@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Contracts.Enums;
 using Domain.Services;
 
 //using Domain.Models;
@@ -27,8 +28,8 @@ namespace csharp_crud_receipebook_3layer_sql
         {
             string name;
             string description;
-            string difficulty; // should be enum
-            int timeToComplete; // should be TimeSpan
+            Difficulty difficulty;
+            TimeSpan timeToComplete;
             int id;
 
             while (true)
@@ -45,7 +46,14 @@ namespace csharp_crud_receipebook_3layer_sql
                 switch (chosenCommand)
                 {
                     case "1":
-                        var allReceipes = _receipeService.GetAll();
+                        Console.WriteLine("Select the field to sort by:");
+                        _receipeService.PrintOrderBys();
+                        OrderBy sortCommand = (OrderBy)Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Select the sort direction:");
+                        _receipeService.PrintOrderDirs();
+                        OrderDirection dirCommand = (OrderDirection)Convert.ToInt32(Console.ReadLine());
+
+                        var allReceipes = _receipeService.GetAll(sortCommand, dirCommand);
                         foreach (var receipe in allReceipes)
                         {
                             Console.WriteLine(receipe);
@@ -58,14 +66,19 @@ namespace csharp_crud_receipebook_3layer_sql
                         Console.WriteLine("Enter receipe Description: ");
                         description = Console.ReadLine();
                         Console.WriteLine("Enter receipe Difficulty: ");
-                        difficulty = Console.ReadLine(); // should be enum
+                        _receipeService.PrintDifficulties();
+                        difficulty = (Difficulty)Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Enter receipe Duration: ");
-                        timeToComplete = Convert.ToInt32(Console.ReadLine()); // should be TimeSpan
+                        Console.Write("Hours:");
+                        TimeSpan hours = TimeSpan.FromHours(Convert.ToInt32(Console.ReadLine()));
+                        Console.Write("Minutes: ");
+                        TimeSpan minutes = TimeSpan.FromMinutes(Convert.ToInt32(Console.ReadLine()));
+                        timeToComplete = hours + minutes;
                         _receipeService.Create(new ReceipeMain
                         {
                             Name = name,
-                            Difficulty = Contracts.Enums.Difficulty.Hard,
-                            Time_To_Complete = TimeSpan.FromMinutes(timeToComplete),
+                            Difficulty = difficulty,
+                            Time_To_Complete = timeToComplete,
                             Date_Created = DateTime.Now
                         }, new ReceipeDescription
                         {

@@ -32,28 +32,3 @@ Date_created	Date_created
 
 
 atskira klase receipes sorting filter. turetu tureti proipercius, pagal kuriuos keician. Enumas - asc, desc. Property - pagal kuri lauka - vel enumas gali buti?
-
--------------------Papildyta-----------------:
-- Sukurti aplikaciją "Recipes app"
-- Receptus saugome Sql duomenų bazėję
-
-- Recipe description turi būti saugomi atskiroje lentelėje
-
- 
-"Recipe" model:
-- Id
-- Name
-- Description
-- Difficulty (Easy, Medium, Hard)
-- TimeToComplete (TimeSpan)
-- DateCreated
-
-Galimos komandos konsolėje:
-- Show all recipes
-       Order by:
-            - TimeToComplete Desc/Asc
-            - DateCreated Desc/Asc
-- Add recipe
-- Edit recipe
-- Delete recipe
-- Delete all recipes

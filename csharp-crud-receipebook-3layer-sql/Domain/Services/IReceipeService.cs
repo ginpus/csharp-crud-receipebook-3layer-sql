@@ -10,7 +10,7 @@ namespace Domain.Services
 {
     public interface IReceipeService
     {
-        public IEnumerable<Receipe> GetAll();
+        public IEnumerable<Receipe> GetAll(Enum orderField, Enum orderDirection);
 
         public void Create(ReceipeMain receipe, ReceipeDescription receipeDescription);
 
@@ -19,5 +19,11 @@ namespace Domain.Services
         public void DeleteById(int id);
 
         public void ClearAll();
+
+        public void PrintOrderBys();
+
+        public void PrintOrderDirs();
+
+        public void PrintDifficulties();
     }
 }

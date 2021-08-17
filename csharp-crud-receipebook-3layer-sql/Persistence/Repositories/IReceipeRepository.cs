@@ -9,7 +9,7 @@ namespace Persistence.Repositories
 {
     public interface IReceipeRepository
     {
-        IEnumerable<Receipe> GetAll();
+        IEnumerable<Receipe> GetAll(Enum orderField, Enum orderDirection);
 
         void Save(ReceipeMain receipe);
 
