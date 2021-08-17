@@ -35,7 +35,13 @@ namespace Persistence.Repositories
         public void Save(ReceipeMain receipe)
         {
             var sqlInsert = @$"INSERT INTO {TableName} (name, difficulty, time_to_complete, date_created) VALUES(@name, @difficulty, @time_to_complete, @date_created)";
-            _sqlClient.Execute(sqlInsert, receipe);
+            _sqlClient.Execute(sqlInsert, new
+            {
+                name = receipe.Name,
+                difficulty = receipe.Difficulty.ToString(),
+                time_to_complete = receipe.Time_To_Complete,
+                date_created = receipe.Date_Created
+            });
         }
 
         public void Edit(int id, string name)
