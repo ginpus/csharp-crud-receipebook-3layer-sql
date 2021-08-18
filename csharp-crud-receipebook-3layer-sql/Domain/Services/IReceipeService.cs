@@ -1,4 +1,4 @@
-﻿//using Domain.Models;
+﻿using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,20 +10,20 @@ namespace Domain.Services
 {
     public interface IReceipeService
     {
-        public IEnumerable<Receipe> GetAll(Enum orderField, Enum orderDirection);
+        Task<IEnumerable<ReceipeDomain>> GetAllAsync(Enum orderField, Enum orderDirection);
 
-        public void Create(ReceipeMain receipe, ReceipeDescription receipeDescription);
+        Task<int> CreateAsync(ReceipeMain receipe, ReceipeDescription receipeDescription);
 
-        public void Edit(int id, string name, string description);
+        Task<int> EditAsync(int id, string name, string description);
 
-        public void DeleteById(int id);
+        Task<int> DeleteByIdAsync(int id);
 
-        public void ClearAll();
+        Task<int> ClearAllAsync();
 
-        public void PrintOrderBys();
+        void PrintOrderBys();
 
-        public void PrintOrderDirs();
+        void PrintOrderDirs();
 
-        public void PrintDifficulties();
+        void PrintDifficulties();
     }
 }

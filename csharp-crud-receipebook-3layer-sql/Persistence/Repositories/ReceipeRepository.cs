@@ -18,58 +18,55 @@ namespace Persistence.Repositories
             _sqlClient = sqlClient;
         }
 
-        public IEnumerable<Receipe> GetAll(Enum orderField, Enum orderDirection)
+        public Task<IEnumerable<Receipe>> GetAllAsync(Enum orderField, Enum orderDirection)
         {
-            //var sqlSelect = $"SELECT {TableName}.receipe_id, {TableName}.name, {TableName}.difficulty, {TableName}.time_to_complete, {TableName}.date_created, {TableName2}.description FROM {TableName} JOIN {TableName2} ON {TableName}.receipe_id = {TableName2}.receipe_id ORDER BY @orderFld @orderDir";
-
             var sqlSelect = $"SELECT {TableName}.receipe_id, {TableName}.name, {TableName}.difficulty, {TableName}.time_to_complete, {TableName}.date_created, {TableName2}.description FROM {TableName} JOIN {TableName2} ON {TableName}.receipe_id = {TableName2}.receipe_id ORDER BY {orderField.ToString()} {orderDirection.ToString()}";
 
-            return _sqlClient.Query<Receipe>(sqlSelect);
-
-            /*            return _sqlClient.Query<Receipe>(sqlSelect, new {
-                            orderFld = orderField.ToString(),
-                            orderDir = orderDirection.ToString(),
-                        });*/
+            return _sqlClient.QueryAsync<Receipe>(sqlSelect);
         }
 
-        public void Save(ReceipeMain receipe)
+        public Task<int> SaveAsync(ReceipeMain receipe)
         {
             var sqlInsert = @$"INSERT INTO {TableName} (name, difficulty, time_to_complete, date_created) VALUES(@name, @difficulty, @time_to_complete, @date_created)";
-            _sqlClient.Execute(sqlInsert, new
+            var rowsAffected = _sqlClient.ExecuteAsync(sqlInsert, new
             {
                 name = receipe.Name,
                 difficulty = receipe.Difficulty.ToString(),
                 time_to_complete = receipe.Time_To_Complete,
                 date_created = receipe.Date_Created
             });
+            return rowsAffected;
         }
 
-        public void Edit(int id, string name)
+        public Task<int> EditAsync(int id, string name)
         {
             var sqlUpdate = $"UPDATE {TableName} SET name = @name where receipe_id = @receipe_id";
 
-            _sqlClient.Execute(sqlUpdate, new
+            var rowsAffected = _sqlClient.ExecuteAsync(sqlUpdate, new
             {
                 receipe_id = id,
                 name = name
             });
+            return rowsAffected;
         }
 
-        public void Delete(int id)
+        public Task<int> DeleteAsync(int id)
         {
             var sqlDelete = $"DELETE FROM {TableName} WHERE receipe_id = @receipe_id";
 
-            _sqlClient.Execute(sqlDelete, new
+            var rowsAffected = _sqlClient.ExecuteAsync(sqlDelete, new
             {
                 receipe_id = id
             });
+            return rowsAffected;
         }
 
-        public void DeleteAll()
+        public Task<int> DeleteAllAsync()
         {
             var sqlDeleteAll = $"DELETE FROM {TableName}";
 
-            _sqlClient.Execute(sqlDeleteAll);
+            var rowsAffected = _sqlClient.ExecuteAsync(sqlDeleteAll);
+            return rowsAffected;
         }
     }
 }

@@ -9,14 +9,14 @@ namespace Persistence.Repositories
 {
     public interface IReceipeDescRepository
     {
-        IEnumerable<ReceipeDescription> GetAll();
+        Task<IEnumerable<ReceipeDescription>> GetAllAsync();
 
-        void Save(ReceipeDescription receipe);
+        Task<int> SaveAsync(ReceipeDescription receipe);
 
-        void Edit(int id, string description);
+        Task<int> EditAsync(int id, string description);
 
-        void Delete(int id);
+        Task<int> DeleteAsync(int id);
 
-        void DeleteAll();
+        Task<int> DeleteAllAsync();
     }
 }

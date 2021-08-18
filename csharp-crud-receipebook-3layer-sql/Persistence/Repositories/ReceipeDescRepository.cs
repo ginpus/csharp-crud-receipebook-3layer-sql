@@ -17,44 +17,49 @@ namespace Persistence.Repositories
             _sqlClient = sqlClient;
         }
 
-        public IEnumerable<ReceipeDescription> GetAll()
+        public Task<IEnumerable<ReceipeDescription>> GetAllAsync()
         {
             var sqlSelect = $"SELECT * FROM {TableName}";
-            return _sqlClient.Query<ReceipeDescription>(sqlSelect);
+            return _sqlClient.QueryAsync<ReceipeDescription>(sqlSelect);
         }
 
-        public void Save(ReceipeDescription receipe)
+        public Task<int> SaveAsync(ReceipeDescription receipe)
         {
             var sqlInsert = @$"INSERT INTO {TableName} (description) VALUES(@description)";
-            _sqlClient.Execute(sqlInsert, receipe);
+            var rowsAffected = _sqlClient.ExecuteAsync(sqlInsert, receipe);
+            return rowsAffected;
         }
 
-        public void Edit(int id, string description)
+        public Task<int> EditAsync(int id, string description)
         {
             var sqlUpdate = $"UPDATE {TableName} SET description = @description where receipe_id = @receipe_id";
 
-            _sqlClient.Execute(sqlUpdate, new
+            var rowsAffected = _sqlClient.ExecuteAsync(sqlUpdate, new
             {
                 receipe_id = id,
                 description = description
             });
+            return rowsAffected;
         }
 
-        public void Delete(int id)
+        public Task<int> DeleteAsync(int id)
         {
             var sqlDelete = $"DELETE FROM {TableName} WHERE receipe_id = @receipe_id";
 
-            _sqlClient.Execute(sqlDelete, new
+            var rowsAffected = _sqlClient.ExecuteAsync(sqlDelete, new
             {
                 receipe_id = id
             });
+            return rowsAffected;
         }
 
-        public void DeleteAll()
+        public Task<int> DeleteAllAsync()
         {
             var sqlDeleteAll = $"DELETE FROM {TableName}";
 
-            _sqlClient.Execute(sqlDeleteAll);
+            var rowsAffected = _sqlClient.ExecuteAsync(sqlDeleteAll);
+
+            return rowsAffected;
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9Z7h5gRl8ZHf/4I7kTABoVQj7MnPEEhCr/e8BHsHUf8bdaQG3nt32JRdkAcGtLZx2Y1flqHa/c1ja6RJ6I6prA==",
+  "dgSpecHash": "SzUdDZiF7qChJsgz9cKGpt5xZrXnjUtCv/ZGGmVTa1Ts7hQ3QtuKUVPim3KTeeHM79WhY39xjdWv0yX3eJ1Qog==",
   "success": true,
   "projectFilePath": "F:\\Desktop\\dotNET\\C#\\8.15\\ReceipeApp\\csharp-crud-receipebook-3layer-sql\\Persistence\\Persistence.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,8 @@
     "C:\\Users\\ginta\\.nuget\\packages\\k4os.compression.lz4\\1.1.11\\k4os.compression.lz4.1.1.11.nupkg.sha512",
     "C:\\Users\\ginta\\.nuget\\packages\\k4os.compression.lz4.streams\\1.1.11\\k4os.compression.lz4.streams.1.1.11.nupkg.sha512",
     "C:\\Users\\ginta\\.nuget\\packages\\k4os.hash.xxhash\\1.0.6\\k4os.hash.xxhash.1.0.6.nupkg.sha512",
+    "C:\\Users\\ginta\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.2\\microsoft.extensions.dependencyinjection.5.0.2.nupkg.sha512",
+    "C:\\Users\\ginta\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\ginta\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\ginta\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\ginta\\.nuget\\packages\\mysql.data\\8.0.26\\mysql.data.8.0.26.nupkg.sha512",

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace csharp_crud_receipebook_3layer_sql
@@ -13,7 +14,7 @@ namespace csharp_crud_receipebook_3layer_sql
 
             var receipeApp = serviceProvider.GetService<ReceipeApp>();
 
-            receipeApp.Start();
+            receipeApp.StartAsync();
         }
     }
 }

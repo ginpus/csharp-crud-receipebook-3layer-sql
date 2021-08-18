@@ -17,33 +17,23 @@ namespace Persistence
             _connectionString = connectionString;
         }
 
-        public int Execute(string sql, object param = null) // sql's will come from Repositories
+        public async Task<int> ExecuteAsync(string sql, object param = null)
         {
             using var connection = new MySqlConnection(_connectionString);
 
-            connection.Open();
+            var rowsAffected = await connection.ExecuteAsync(sql, param);
+            if (rowsAffected < 1)
+            {
+                throw new Exception("No rows affected");
+            }
 
-            return connection.Execute(sql, param);
+            return rowsAffected;
         }
 
-        public IEnumerable<T> Query<T>(string sql, object param = null)
+        public Task<IEnumerable<T>> QueryAsync<T>(string sql, object param = null)
         {
             using var connection = new MySqlConnection(_connectionString);
-
-            connection.Open();
-
-            return connection.Query<T>(sql, param);
+            return connection.QueryAsync<T>(sql, param);
         }
-
-        /*        public async Task<IEnumerable<T>> QueryAsync<T>(string sql, object param = null)
-                {
-                    using var connection = new MySqlConnection(_connectionString);
-
-                    connection.Open();
-
-                    var result = await connection.QueryAsync<T>(sql, param); // async method should return type
-
-                    return result;
-                }*/
     }
 }

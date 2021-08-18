@@ -7,7 +7,7 @@ using Contracts.Enums;
 
 namespace Domain.Models
 {
-    public class Receipe
+    public class ReceipeDomain
     {
         public int Receipe_Id { get; set; }
         public string Name { get; set; }

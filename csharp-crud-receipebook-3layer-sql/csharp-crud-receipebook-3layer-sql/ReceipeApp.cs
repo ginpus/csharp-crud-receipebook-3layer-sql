@@ -24,7 +24,7 @@ namespace csharp_crud_receipebook_3layer_sql
         {
         }
 
-        public void Start()
+        public async Task StartAsync()
         {
             string name;
             string description;
@@ -53,7 +53,8 @@ namespace csharp_crud_receipebook_3layer_sql
                         _receipeService.PrintOrderDirs();
                         OrderDirection dirCommand = (OrderDirection)Convert.ToInt32(Console.ReadLine());
 
-                        var allReceipes = _receipeService.GetAll(sortCommand, dirCommand);
+                        var allReceipes = await _receipeService.GetAllAsync(sortCommand, dirCommand);
+
                         foreach (var receipe in allReceipes)
                         {
                             Console.WriteLine(receipe);
@@ -74,7 +75,7 @@ namespace csharp_crud_receipebook_3layer_sql
                         Console.Write("Minutes: ");
                         TimeSpan minutes = TimeSpan.FromMinutes(Convert.ToInt32(Console.ReadLine()));
                         timeToComplete = hours + minutes;
-                        _receipeService.Create(new ReceipeMain
+                        await _receipeService.CreateAsync(new ReceipeMain
                         {
                             Name = name,
                             Difficulty = difficulty,
@@ -93,17 +94,17 @@ namespace csharp_crud_receipebook_3layer_sql
                         name = (Console.ReadLine());
                         Console.WriteLine("Enter new receipe Description");
                         description = (Console.ReadLine());
-                        _receipeService.Edit(id, name, description);
+                        await _receipeService.EditAsync(id, name, description);
                         break;
 
                     case "4":
                         Console.WriteLine("Enter receipe ID:");
                         id = Convert.ToInt32(Console.ReadLine());
-                        _receipeService.DeleteById(id);
+                        await _receipeService.DeleteByIdAsync(id);
                         break;
 
                     case "5":
-                        _receipeService.ClearAll();
+                        await _receipeService.ClearAllAsync();
                         break;
 
                     case "6":

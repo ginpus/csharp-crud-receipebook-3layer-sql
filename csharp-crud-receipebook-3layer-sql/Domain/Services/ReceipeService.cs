@@ -1,4 +1,4 @@
-﻿//using Domain.Models;
+﻿using Domain.Models;
 using Persistence.Repositories;
 using System;
 using System.Collections.Generic;
@@ -21,33 +21,58 @@ namespace Domain.Services
             _receipeDescRepository = receipeDescRepository;
         }
 
-        public IEnumerable<Receipe> GetAll(Enum orderField, Enum orderDirection)
+        public async Task<IEnumerable<ReceipeDomain>> GetAllAsync(Enum orderField, Enum orderDirection)
         {
-            return _receipeRepository.GetAll(orderField, orderDirection);
+            var receipes = await _receipeRepository.GetAllAsync(orderField, orderDirection); //await is needed as we do the remaping of model
+            return receipes.Select(receipe => new ReceipeDomain
+            {
+                Receipe_Id = receipe.Receipe_Id,
+                Name = receipe.Name,
+                Description = receipe.Description,
+                Difficulty = receipe.Difficulty,
+                Time_To_Complete = receipe.Time_To_Complete,
+                Date_Created = receipe.Date_Created
+            });
         }
 
-        public void Create(ReceipeMain receipe, ReceipeDescription receipeDescription)
+        public async Task<int> CreateAsync(ReceipeMain receipe, ReceipeDescription receipeDescription)
         {
-            _receipeRepository.Save(receipe);
-            _receipeDescRepository.Save(receipeDescription);
+            var mainCreate = _receipeRepository.SaveAsync(receipe);
+            var descCreate = _receipeDescRepository.SaveAsync(receipeDescription);
+
+            await Task.WhenAll(mainCreate, descCreate);
+
+            return await mainCreate;
         }
 
-        public void Edit(int id, string name, string description)
+        public async Task<int> EditAsync(int id, string name, string description)
         {
-            _receipeRepository.Edit(id, name);
-            _receipeDescRepository.Edit(id, description);
+            var mainEdit = _receipeRepository.EditAsync(id, name);
+            var descEdit = _receipeDescRepository.EditAsync(id, description);
+
+            await Task.WhenAll(mainEdit, descEdit);
+
+            return await mainEdit;
         }
 
-        public void DeleteById(int id)
+        public async Task<int> DeleteByIdAsync(int id)
         {
-            _receipeRepository.Delete(id);
-            _receipeDescRepository.Delete(id);
+            var mainDelete = _receipeRepository.DeleteAsync(id);
+            var descDelete = _receipeDescRepository.DeleteAsync(id);
+
+            await Task.WhenAll(mainDelete, descDelete);
+
+            return await descDelete;
         }
 
-        public void ClearAll()
+        public async Task<int> ClearAllAsync()
         {
-            _receipeRepository.DeleteAll();
-            _receipeDescRepository.DeleteAll();
+            var mainDeleteAll = _receipeRepository.DeleteAllAsync();
+            var descDeleteAll = _receipeDescRepository.DeleteAllAsync();
+
+            await Task.WhenAll(mainDeleteAll, descDeleteAll);
+
+            return await mainDeleteAll;
         }
 
         public void PrintOrderBys()
